@@ -86,7 +86,7 @@ class SimCLR(object):
 
                 features = self.model(images)
                 logits, labels = self.info_nce_loss(features)
-                loss = self.criterion(logits, labels)
+                loss = self.criterion(logits, labels.long())
 
                 self.optimizer.zero_grad()
                 if apex_support and self.args.fp16_precision:
